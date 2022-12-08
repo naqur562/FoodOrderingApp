@@ -7,6 +7,9 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart"
 
 const Header = (props) => {
 
+
+
+
     return(
         <AppBar className="nav" position="static">
             <ToolBar className="nav-contents">
@@ -15,6 +18,7 @@ const Header = (props) => {
                 </Typography>
                 <Button 
                     sm = {12}
+                    onClick = {props.toggleCart}
                     className="cart-button" 
                     variant="contained" 
                     color="primary" 
@@ -24,7 +28,7 @@ const Header = (props) => {
                             Your Cart
                         </Typography>
                         <Typography className="cart-total" variant="h6">
-                            0
+                            {props.cartTotal}
                         </Typography>
                 </Button>
             </ToolBar>
