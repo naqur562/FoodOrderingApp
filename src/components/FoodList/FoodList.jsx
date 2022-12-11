@@ -12,8 +12,6 @@ const FoodList = (props) => {
                     name = {x.name}
                     description = {x.description}
                     price= {x.price}
-                    updateAllItems = {props.updateAllItems}
-                    toggleError = {props.toggleError}
                 />
             })}
 

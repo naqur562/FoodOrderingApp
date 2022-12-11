@@ -3,9 +3,13 @@ import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import Divider from "@mui/material/Divider"
 
-import {useRef} from "react"
+import ErrorContext from "../store/error-context"
+
+import {useRef, useContext} from "react"
 
 const FoodItem = (props) => {
+
+  const ctx = useContext(ErrorContext)
 
     const addQuantity = useRef()
 
@@ -13,7 +17,7 @@ const FoodItem = (props) => {
     const handleAdd = () =>{
 
         if(addQuantity.current.value <= 0){
-            props.toggleError("Please enter a value that is greater than 0")
+            ctx.toggleError("Please enter a value that is greater than 0")
             
             
         } else {
@@ -22,10 +26,10 @@ const FoodItem = (props) => {
                 id: props.id,
                 name: props.name,
                 price: props.price,
-                amount: addQuantity.current.value
+                amount: Number(addQuantity.current.value)
             }
             
-            props.updateAllItems(addCart)
+            ctx.updateAllItems(addCart)
             document.getElementById(props.id).value = ""
         }
 
